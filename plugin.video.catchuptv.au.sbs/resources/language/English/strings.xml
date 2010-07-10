@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- settings labels -->
+    <string id="30100">Preferred Video Quality</string>
+    <string id="30101">128kbps</string>
+    <string id="30102">300kbps</string>
+    <string id="30103">1000kbps</string>
+    <string id="30150">Prompt for Quality Selection before each video</string>
+
+    <!-- category & label separators -->
+    <string id="30300">General</string>
+    <string id="30301">Showtimes</string>
+    <string id="30302">Skinning</string>
+    
+    <string id="30320">Resolution</string>
+    <string id="30321">Location</string>
+    <string id="30322">Fanart Preferences</string>
+    <string id="30323">Rating Limit</string>
+    <string id="30324">Playback</string>
+    <string id="30325">Scraper</string>
+
+    <!-- mpaa ratings -->
+    <string id="30400">G</string>
+    <string id="30401">PG</string>
+    <string id="30402">PG-13</string>
+    <string id="30403">R</string>
+    <string id="30404">NC-17</string>
+    <string id="30405">No Limit</string>
+
+    <!-- messages -->
+    <string id="30500">Downloading: %s</string>
+    <string id="30501">Saving: %s</string>
+    <string id="30502">To: %s</string>
+    <string id="30503">Copying: %s</string>
+
+    <!-- compatible messages -->
+    <string id="30700">version</string>
+    <string id="30701">This version of %s requires an</string>
+    <string id="30702">XBMC revision of %s or greater to run.</string>
+    <string id="30703">Please update your XBMC.</string>
+</strings>

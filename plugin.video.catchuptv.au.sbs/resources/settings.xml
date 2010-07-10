@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <setting label="30320" type="lsep" />
+    <setting label="30100" type="enum" id="vid_quality" default="2" lvalues="30101|30102|30103" />
+    <setting label="30150" type="bool" id="prompt_user" default="false" />
+</settings>
