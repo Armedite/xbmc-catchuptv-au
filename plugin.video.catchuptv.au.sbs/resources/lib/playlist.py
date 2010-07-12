@@ -16,7 +16,8 @@ class Main:
         playlist = xml.etree.ElementTree.parse(playlistUrl)
         videos = playlist.findall("video")
         for video in videos: 
-            listItm = xbmcgui.ListItem(video.findtext("title"))
+            title = video.findtext("title")
+            listItm = xbmcgui.ListItem(title)
             for img in video.findall("media/image"):
                 if (img.get("type") == "thumbnail" and len(img.get("src"))>0):
                     listItm.setThumbnailImage(img.get("src"))
@@ -26,9 +27,19 @@ class Main:
                 date = 0
             hours, remainder = divmod(int(video.findtext("duration"))/1000, 3600)
             minutes, seconds = divmod(remainder, 60)
-            try:
-                listItm.setInfo("video",{'date': time.strftime("%d.%m.%Y",time.gmtime(date)),'year':int(time.strftime("%Y",time.gmtime(date))),'plot':video.findtext("description"),'duration':"%s:%s:%s" % (hours, minutes, seconds)})
-            except: pass
+            m = re.search('^(.+?)Ep\s*([0-9]+)(?:\s*-\s*(.+))?$',title)
+            if (m != None):
+                seriesName = m.group(1)
+                episodeNo = int(m.group(2))
+                if m.group(3) != None:
+                    episodeName = m.group(3)
+                try:
+                    listItm.setInfo("video",{'title':seriesName,'episode':episodeNo,'date': time.strftime("%d.%m.%Y",time.gmtime(date)),'year':int(time.strftime("%Y",time.gmtime(date))),'plot':video.findtext("description"),'duration':"%s:%s:%s" % (hours, minutes, seconds)})
+                except: pass
+            else:
+                try:
+                    listItm.setInfo("video",{'date': time.strftime("%d.%m.%Y",time.gmtime(date)),'year':int(time.strftime("%Y",time.gmtime(date))),'plot':video.findtext("description"),'duration':"%s:%s:%s" % (hours, minutes, seconds)})
+                except: pass
             #TODO: Do some intelegent auto-parsing such as spliting at '-'s and loking for "ep 54", etc.
             #TODO: I couldn't work out how to do it, but reusing the existing list item would be better (perhaps?) rather than passing all the data
             xbmcplugin.addDirectoryItem(handle=int( sys.argv[ 1 ] ),
