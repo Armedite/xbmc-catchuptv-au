@@ -47,8 +47,8 @@ class Main:
                 url='%s?downloadId=%s&title=%s&description=%s&duration=%s&date=%s&year=%s' % (
                     sys.argv[ 0 ],
                     video.get("src").rsplit("/",1)[1],
-                    urllib.quote_plus(video.findtext("title")),
-                    urllib.quote_plus(video.findtext("description")),
+                    urllib.quote_plus(video.findtext("title").encode('iso-8859-1')),
+                    urllib.quote_plus(video.findtext("description").encode('iso-8859-1')),
                     urllib.quote_plus("%s:%s:%s" % (hours, minutes, seconds)),
                     urllib.quote_plus(time.strftime("%d.%m.%Y",time.gmtime(date))),
                     urllib.quote_plus(time.strftime("%Y",time.gmtime(date))) 
